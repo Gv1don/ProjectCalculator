@@ -1,0 +1,213 @@
+﻿<Window x:Class="Calculator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewmodels="clr-namespace:Calculator.ViewModels"
+        xmlns:local="clr-namespace:Calculator"
+        mc:Ignorable="d"
+        Title="Calculator"
+        Height="495"
+        Width="335"
+        WindowStyle="SingleBorderWindow"
+        ResizeMode="CanResize"
+        WindowStartupLocation="CenterScreen"
+        MinHeight="495" 
+        MinWidth="335" 
+        BorderThickness="0,0,0,0">
+    <Window.DataContext>
+        <viewmodels:MainWindowViewModel/>
+    </Window.DataContext>
+    <Window.Resources>
+        <Style x:Key="PatternButton" TargetType="Button">
+            <Style.Setters>
+                <Setter Property="Margin" Value="1"/>
+                <Setter Property="FontSize" Value="35"/>
+            </Style.Setters>
+        </Style>
+        <Style x:Key="ChildrenButtonNumbers" TargetType="Button" BasedOn="{StaticResource PatternButton}">
+            <Style.Setters>
+                <Setter Property="Background" Value="#6BB1BF"/>
+            </Style.Setters>
+        </Style>
+        <Style x:Key="ChildrenButtonCommands" TargetType="Button" BasedOn="{StaticResource PatternButton}">
+            <Style.Setters>
+                <Setter Property="Background" Value="#CEF3FA"/>
+            </Style.Setters>
+        </Style>
+    </Window.Resources>
+    <Window.InputBindings>
+        <KeyBinding Command="{Binding Backspace}" Key="Backspace"/>
+        <KeyBinding Command="{Binding Backspace}" Key="Delete"/>
+        <KeyBinding Command="{Binding EnterOne}" Key="D1"/>
+        <KeyBinding Command="{Binding EnterTwo}" Key="D2"/>
+        <KeyBinding Command="{Binding EnterThree}" Key="D3"/>
+        <KeyBinding Command="{Binding EnterFour}" Key="D4"/>
+        <KeyBinding Command="{Binding EnterFive}" Key="D5"/>
+        <KeyBinding Command="{Binding EnterSix}" Key="D6"/>
+        <KeyBinding Command="{Binding EnterSeven}" Key="D7"/>
+        <KeyBinding Command="{Binding EnterEight}" Key="D8"/>
+        <KeyBinding Command="{Binding EnterNine}" Key="D9"/>
+        <KeyBinding Command="{Binding EnterNull}" Key="D0"/>
+        <KeyBinding Command="{Binding EnterOne}" Key="NumPad1"/>
+        <KeyBinding Command="{Binding EnterTwo}" Key="NumPad2"/>
+        <KeyBinding Command="{Binding EnterThree}" Key="NumPad3"/>
+        <KeyBinding Command="{Binding EnterFour}" Key="NumPad4"/>
+        <KeyBinding Command="{Binding EnterFive}" Key="NumPad5"/>
+        <KeyBinding Command="{Binding EnterSix}" Key="NumPad6"/>
+        <KeyBinding Command="{Binding EnterSeven}" Key="NumPad7"/>
+        <KeyBinding Command="{Binding EnterEight}" Key="NumPad8"/>
+        <KeyBinding Command="{Binding EnterNine}" Key="NumPad9"/>
+        <KeyBinding Command="{Binding EnterNull}" Key="NumPad0"/>
+    </Window.InputBindings>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <TextBox Grid.Row="0" 
+                 Grid.ColumnSpan="4"
+                 FontSize="40"
+                 TextAlignment="Left"
+                 Padding="2,0,0,0"
+                 Text="{Binding NumbersTextBox,
+                        UpdateSourceTrigger=PropertyChanged, 
+                        Mode=TwoWay}"
+                 IsReadOnly="True"
+                 BorderThickness="0"/>
+        <TextBox Grid.Row="1" 
+                 Grid.ColumnSpan="4"
+                 FontSize="20"
+                 Foreground="#606060"
+                 Padding="5,-6,0,0"
+                 TextAlignment="Left"
+                 Text="{Binding HistoryTextBox,
+                        UpdateSourceTrigger=PropertyChanged, 
+                        Mode=TwoWay}"
+                 IsReadOnly="True"
+                 BorderThickness="0"/>
+        <Button Grid.Row="2"
+                Grid.Column="0"
+                Style="{StaticResource ChildrenButtonCommands}" 
+                Content ="%"/>
+        <Button Grid.Row="2"
+                Grid.Column="1"
+                Style="{StaticResource ChildrenButtonCommands}" 
+                Content ="CE"/>
+        <Button Grid.Row="2"
+                Grid.Column="2"
+                Style="{StaticResource ChildrenButtonCommands}" 
+                Content ="C"/>
+        <Button Grid.Row="2"
+                Grid.Column="3"
+                Style="{StaticResource ChildrenButtonCommands}" 
+                Content ="⌫"
+                Command="{Binding Backspace}"/>
+        <Button Grid.Row="3"
+                Grid.Column="0"
+                Style="{StaticResource ChildrenButtonCommands}" 
+                Content ="1/x"/>
+        <Button Grid.Row="3"
+                Grid.Column="1"
+                Style="{StaticResource ChildrenButtonCommands}" 
+                Content ="x^2"/>
+        <Button Grid.Row="3"
+                Grid.Column="2"
+                Style="{StaticResource ChildrenButtonCommands}" 
+                Content ="√x"/>
+        <Button Grid.Row="3"
+                Grid.Column="3"
+                Style="{StaticResource ChildrenButtonCommands}" 
+                Content ="/"/>
+        <Button Grid.Row="4"
+                Grid.Column="0"
+                Style="{StaticResource ChildrenButtonNumbers}" 
+                Content ="7"
+                Command="{Binding EnterSeven}"/>
+        <Button Grid.Row="4"
+                Grid.Column="1"
+                Style="{StaticResource ChildrenButtonNumbers}" 
+                Content ="8"
+                Command="{Binding EnterEight}"/>
+        <Button Grid.Row="4"
+                Grid.Column="2"
+                Style="{StaticResource ChildrenButtonNumbers}" 
+                Content ="9"
+                Command="{Binding EnterNine}"/>
+        <Button Grid.Row="4"
+                Grid.Column="3"
+                Style="{StaticResource ChildrenButtonCommands}" 
+                Content ="*"/>
+        <Button Grid.Row="5"
+                Grid.Column="0"
+                Style="{StaticResource ChildrenButtonNumbers}" 
+                Content ="4"
+                Command="{Binding EnterFour}"/>
+        <Button Grid.Row="5"
+                Grid.Column="1"
+                Style="{StaticResource ChildrenButtonNumbers}" 
+                Content ="5"
+                Command="{Binding EnterFive}"/>
+        <Button Grid.Row="5"
+                Grid.Column="2"
+                Style="{StaticResource ChildrenButtonNumbers}" 
+                Content ="6"
+                Command="{Binding EnterSix}"/>
+        <Button Grid.Row="5"
+                Grid.Column="3"
+                Style="{StaticResource ChildrenButtonCommands}" 
+                Content ="-"
+                Command="{Binding Minus}"/>
+        <Button Grid.Row="6"
+                Grid.Column="0"
+                Style="{StaticResource ChildrenButtonNumbers}" 
+                Content ="1"
+                Command="{Binding EnterOne}"/>
+        <Button Grid.Row="6"
+                Grid.Column="1"
+                Style="{StaticResource ChildrenButtonNumbers}" 
+                Content ="2"
+                Command="{Binding EnterTwo}"/>
+        <Button Grid.Row="6"
+                Grid.Column="2"
+                Style="{StaticResource ChildrenButtonNumbers}" 
+                Content ="3"
+                Command="{Binding EnterThree}"/>
+        <Button Grid.Row="6"
+                Grid.Column="3"
+                Style="{StaticResource ChildrenButtonCommands}" 
+                Content ="+"
+                Command="{Binding Plus}"/>
+        <Button Grid.Row="7"
+                Grid.Column="3"
+                Style="{StaticResource ChildrenButtonCommands}" 
+                Content ="="
+                Command="{Binding Equal}"/>
+        <Button Grid.Row="7"
+                Grid.Column="2"
+                Style="{StaticResource ChildrenButtonCommands}" 
+                Content =","/>
+        <Button Grid.Row="7"
+                Grid.Column="1"
+                Style="{StaticResource ChildrenButtonNumbers}" 
+                Content ="0"
+                Command="{Binding EnterNull}"/>
+        <Button Grid.Row="7"
+                Grid.Column="0"
+                Style="{StaticResource ChildrenButtonCommands}" 
+                Content ="+/-"
+                Command="{Binding SwitchSign}"/>
+    </Grid>
+</Window>
