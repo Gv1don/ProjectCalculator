@@ -38,7 +38,7 @@
     </Window.Resources>
     <Window.InputBindings>
         <KeyBinding Command="{Binding Backspace}" Key="Backspace"/>
-        <KeyBinding Command="{Binding Backspace}" Key="Delete"/>
+        <KeyBinding Command="{Binding Clear}" Key="Delete"/>
         <KeyBinding Command="{Binding EnterOne}" Key="D1"/>
         <KeyBinding Command="{Binding EnterTwo}" Key="D2"/>
         <KeyBinding Command="{Binding EnterThree}" Key="D3"/>
@@ -101,14 +101,17 @@
         <Button Grid.Row="2"
                 Grid.Column="0"
                 Style="{StaticResource ChildrenButtonCommands}" 
-                Content ="%"/>
+                Content ="%"
+                Command="{Binding Procent}"/>
         <Button Grid.Row="2"
                 Grid.Column="1"
-                Style="{StaticResource ChildrenButtonCommands}" 
+                Style="{StaticResource ChildrenButtonCommands}"
+                Command="{Binding Clear}"
                 Content ="CE"/>
         <Button Grid.Row="2"
                 Grid.Column="2"
-                Style="{StaticResource ChildrenButtonCommands}" 
+                Style="{StaticResource ChildrenButtonCommands}"
+                Command="{Binding ClearAll}"
                 Content ="C"/>
         <Button Grid.Row="2"
                 Grid.Column="3"
@@ -118,15 +121,18 @@
         <Button Grid.Row="3"
                 Grid.Column="0"
                 Style="{StaticResource ChildrenButtonCommands}" 
-                Content ="1/x"/>
+                Content ="1/x"
+                Command="{Binding DivisionDecimal}"/>
         <Button Grid.Row="3"
                 Grid.Column="1"
                 Style="{StaticResource ChildrenButtonCommands}" 
-                Content ="x^2"/>
+                Content ="x^2"
+                Command="{Binding Degree}"/>
         <Button Grid.Row="3"
                 Grid.Column="2"
                 Style="{StaticResource ChildrenButtonCommands}" 
-                Content ="√x"/>
+                Content ="√x"
+                Command="{Binding Root}"/>
         <Button Grid.Row="3"
                 Grid.Column="3"
                 Style="{StaticResource ChildrenButtonCommands}" 
@@ -148,7 +154,8 @@
                 Command="{Binding EnterNine}"/>
         <Button Grid.Row="4"
                 Grid.Column="3"
-                Style="{StaticResource ChildrenButtonCommands}" 
+                Style="{StaticResource ChildrenButtonCommands}"
+                Command="{Binding Multiplication}"
                 Content ="*"/>
         <Button Grid.Row="5"
                 Grid.Column="0"
@@ -198,7 +205,8 @@
         <Button Grid.Row="7"
                 Grid.Column="2"
                 Style="{StaticResource ChildrenButtonCommands}" 
-                Content =","/>
+                Content =","
+                Command="{Binding Comma}"/>
         <Button Grid.Row="7"
                 Grid.Column="1"
                 Style="{StaticResource ChildrenButtonNumbers}" 
